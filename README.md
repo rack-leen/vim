@@ -36,11 +36,11 @@ vim
 " 'Javascript-OmniCompletion-with-YUI-and-j' # Javascript
 " 'JavaScript-Indent'                        # Javascript
 " 'Better-Javascript-Indentation'            # javascript
-" 'jslint.vim'　　　　　　　　　　　　       # javascript
+" 'jslint.vim'　　　　　　　　　　　　          # javascript
 " 'pangloss/vim-javascript'                  # Javascript
-" 'Vim-Script-Updater'　　　　　　　　       # vim插件更新
+" 'Vim-Script-Updater'　　　　　　　　         # vim插件更新
 " 'ctrlp.vim'                                # 文件搜索
-" 'tacahiroy/ctrlp-funky'　　　　　　        # ctrlp文件搜索扩展
+" 'tacahiroy/ctrlp-funky'　　　　　　          # ctrlp文件搜索扩展
 " 'jsbeautify'                               # Javascript代码美化
 " 'The-NERD-Commenter'　                     # 注释工具，可以用这个插件实现统一的注释
 " 'c.vim'                                    # c语言语法高亮
@@ -54,7 +54,7 @@ vim
 " 'easymotion/vim-easymotion'                # 定位插件，能够准确定位到某个字母
 " 'scrooloose/nerdcommenter'                 # 用来批量注释与反注释
 " 'sjl/gundo.vim'                            # 提供无限撤销
-" 'mattn/emmet-vim'　　　　　　　　　        # 它使用仿CSS选择器的语法来生成代码,提高HTML/CSS代码编写的速度,
+" 'mattn/emmet-vim'　　　　　　　　　          # 它使用仿CSS选择器的语法来生成代码,提高HTML/CSS代码编写的速度,
 " 'vim-airline/vim-airline'　　              # 提供底部状态栏和顶部buffer
 " 'tomasr/molokai'                           # 一种主题
 " 'altercation/vim-colors-solarized'　       # 一种主题
@@ -62,7 +62,7 @@ vim
 " 'django_templates.vim'                     # django_templates模板
 " 'derekwyatt/vim-protodef'                  # 能根据类声明自动生成类实现的代码框架
 " 'derekwyatt/vim-fswitch'                   # 能根据类声明自动生成类实现的代码框架
-" 'fholgado/minibufexpl.vim'　　　　　       # 多文档编辑
+" 'fholgado/minibufexpl.vim'　　　　　        # 多文档编辑
 " 'suan/vim-instant-markdown'                # markdown插件
 " 'lilydjwg/fcitx.vim'                       # 能够使得在insert模式使用中文输入法，进入命令行模式直接使用英文
 ```
