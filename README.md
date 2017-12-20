@@ -9,7 +9,7 @@
     https://github.com/ma6174/vim-deprecated
 
 vim
-![vim](https://github.com/rack-leen/vim/vim.png)
+![vim](https://github.com/rack-leen/vim/blob/master/vim.png)
 ## 插件介绍
 ```
 "  ----------------------------------------------------------------------------
