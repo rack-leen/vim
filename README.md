@@ -5,11 +5,12 @@
 + 作者：rack-leen
 + 借鉴：
     这个vim配置借鉴了
-    https://github.com/yangyangwithgnu/use_vim_as_ide
-    https://github.com/ma6174/vim-deprecated
+    * https://github.com/yangyangwithgnu/use_vim_as_ide
+    * https://github.com/ma6174/vim-deprecated
 
 vim
-![vim](https://github.com/rack-leen/vim/vim.png)
+![vim](https://github.com/rack-leen/vim/blob/master/vim.png)
+=======
 ## 插件介绍
 ```
 "  ----------------------------------------------------------------------------
