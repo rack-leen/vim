@@ -12,8 +12,7 @@
     * https://github.com/ma6174/vim-deprecated
 
 vim
-<<<<<<< HEAD
-!vim](https://github.com/rack-leen/vim/blob/master/vim.png)
+![vim](https://github.com/rack-leen/vim/blob/master/vim.png)
 
 
 ==============================================================
@@ -47,7 +46,6 @@ vim分为三种模式
 =======
 ![vim](https://github.com/rack-leen/vim/blob/master/vim.png)
 ## 插件介绍
->>>>>>> vim/master
 ```
 "  ----------------------------------------------------------------------------
 "　插件介绍
