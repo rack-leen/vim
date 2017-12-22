@@ -1,3 +1,41 @@
+"=============================================================
+"
+"File    :  .vimrc
+"Author  :  rack-leen
+"Date    :  2017-12-20
+"Github  :  https://github.com/rack-leen/
+"
+"=============================================================
+
+
+""============================================================
+""|                       _oo0oo_                            |
+""|                      o8888888o                           |
+""|                      88" . "88                           |
+""|                      (| -_- |)                           |
+""|                      0\  =  /0                           |
+""|                    ___/`---'\___                         |
+""|                  .' \\|     |// '.                       |
+""|                 / \\|||  :  |||// \                      |
+""|                / _||||| -:- |||||- \                     |
+""|               |   | \\\  -  /// |   |                    |
+""|               | \_|  ''\---/''  |_/ |                    |
+""|               \  .-\__  '-'  ___/-. /                    |
+""|             ___'. .'  /--.--\  `. .'___                  |
+""|          ."" '<  `.___\_<|>_/___.' >' "".                |
+""|         | | :  `- \`.;`\ _ /`;.`/ - ` : | |              |
+""|         \  \ `_.   \_ __\ /__ _/   .-` /  /              |
+""|     =====`-.____`.___ \_____/___.-`___.-'=====           |
+""|                       `=---='                            |
+""|                                                          |
+""|                                                          |
+""|     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~           |
+""|                                                          |
+""|               佛祖保佑        永无BUG                    |
+""|                                                          |
+""============================================================
+
+
 set sw=4
 set ts=4
 set et
@@ -12,8 +50,8 @@ set mousemodel=popup
 
 au FileType php setlocal dict+=~/.vim/dict/php_funclist.dict
 au FileType css setlocal dict+=~/.vim/dict/css.dict
-"au FileType c setlocal dict+=~/.vim/dict/c.dict
-"au FileType cpp setlocal dict+=~/.vim/dict/cpp.dict
+au FileType c setlocal dict+=~/.vim/dict/c.dict
+au FileType cpp setlocal dict+=~/.vim/dict/cpp.dict
 au FileType scale setlocal dict+=~/.vim/dict/scale.dict
 au FileType javascript setlocal dict+=~/.vim/dict/javascript.dict
 au FileType html setlocal dict+=~/.vim/dict/javascript.dict
@@ -296,6 +334,7 @@ if has("autocmd")
           \   exe "normal g`\"" |
           \ endif
 endif
+autocmd vimenter * if !argc() | Tlist | endif   
 "当打开vim且没有文件时自动打开NERDTree
 autocmd vimenter * if !argc() | NERDTree | endif
 " 只剩 NERDTree时自动关闭
@@ -397,8 +436,8 @@ call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
-"Plugin 'gmarik/vundle'
-Plugin 'VundleVim/Vundle.vim'
+Plugin 'gmarik/vundle'
+
 " My Bundles here:
 "
 " original repos on github
@@ -451,6 +490,13 @@ Plugin 'derekwyatt/vim-fswitch'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'lilydjwg/fcitx.vim'
+Plugin 'tpope/vim-git'
+Plugin 'gregsexton/gitv'
+Plugin 'tpope/vim-pathogen'
+Plugin 'plasticboy/vim-markdown'
+"Plugain 'vim-signify'
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'vim-chat/vim-chat'
 "django
 "Plugin 'django_templates.vim'
 "Plugin 'Django-Projects'
@@ -485,8 +531,9 @@ let g:ycm_complete_in_comments=1
 let g:ycm_confirm_extra_conf=0
 " 开启 YCM 标签补全引擎
 let g:ycm_collect_identifiers_from_tags_files=1
-" 引入 C++ 标准库tags
-set tags+=/data/misc/software/misc./vim/stdcpp.tags
+"OmniCppComplete 基于标签补全
+set tags+=/usr/include/c++/4.8/stdcpp.tags　 "cpp义补全　引入 C++ 标准库tags
+set tags+=/usr/include/sys.tags              "linux系统api 语义补全
 " YCM 集成 OmniCppComplete 补全引擎，设置其快捷键
 inoremap <leader>; <C-x><C-o>
 " 补全内容不以分割子窗口形式出现，只显示补全列表
@@ -497,11 +544,7 @@ let g:ycm_min_num_of_chars_for_completion=1
 let g:ycm_cache_omnifunc=0
 " 语法关键字补全			
 let g:ycm_seed_identifiers_with_syntax=1
-" 开启 YCM 标签引擎
-let g:ycm_collect_identifiers_from_tags_files=1
-" 引入 C++ 标准库tags
-set tags+=/data/misc/software/misc./vim/stdcpp.tags
-"OmniCppComplete 补全快捷键
+" 手工补全
 inoremap <leader>; <C-x><C-o>
 
 "--------------------------------------------------------------------------------
@@ -573,21 +616,10 @@ let g:airline_right_alt_sep = ''
 let g:UltiSnipsExpandTrigger="<leader><tab>"
 let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
 let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
-
-
-"--------------------------------------------------------------------------------
-"4 taglist配置开始
-"--------------------------------------------------------------------------------
-" taglist设置
-let Tist_Show_One_File=1
-let Tist_Eixt_OnlyWindow=1
-
-let g:html_indent_inctags = "html,body,head,tbody"
-let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc"
+let g:UltiSnipsSnippetDirectories=["mysnippets"]  "模板所在目录名
 
 "-------------------------------------------------------------------------------
-"5 The NERD Commenter 
+"4 The NERD Commenter 
 "-------------------------------------------------------------------------------
 "注释符号后面空一格
 let g:NERDSpaceDelims=1
@@ -601,7 +633,7 @@ nmap <C-c>c<space> <cr>
 nmap <Leader>cy <cr>  
 
 "-------------------------------------------------------------------------------
-"6 ctrlp设置
+"5 ctrlp设置
 "-------------------------------------------------------------------------------
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.png,*.jpg,*.gif     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.pyc,*.png,*.jpg,*.gif  " Windows
@@ -613,7 +645,7 @@ let g:ctrlp_extensions = ['funky']
 let NERDTreeIgnore=['\.pyc']
 
 "------------------------------------------------------------------------------
-"7 NERDTree配置
+"6 NERDTree配置
 "------------------------------------------------------------------------------
 "map <C-c>e :NERDTreeToggle 
 "nmap ne :NERDTree<cr>
@@ -631,7 +663,7 @@ let NERDTreeMinimalUI=1
 let NERDTreeAutoDeleteBuffer=1
 
 "------------------------------------------------------------------------------
-"8 Taglist配置
+"7 Taglist配置
 "------------------------------------------------------------------------------
 "map <C-c>l :Tlist
 "默认打开Taglist 
@@ -647,10 +679,14 @@ let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1  
+let g:html_indent_inctags = "html,body,head,tbody"
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
 nmap tl :Tlist<cr>
 
+
 "------------------------------------------------------------------------------
-"9 python补全
+"8 python补全
 "------------------------------------------------------------------------------
 let g:pydiction_location = '~/.vim/after/complete-dict'
 let g:pydiction_menu_height = 20
@@ -662,7 +698,7 @@ let g:miniBufExplModSelTarget = 1
 
 
 "------------------------------------------------------------------------------
-"10 CTags的设定  
+"9 CTags的设定  
 "------------------------------------------------------------------------------
 let Tlist_Sort_Type = "name"          " 按照名称排序  
 let Tlist_Use_Right_Window = 1        " 在右侧显示窗口  
@@ -674,8 +710,9 @@ let Tlist_Exist_OnlyWindow = 1        " 如果只有一个buffer，kill窗口也
 "设置tags  
 set tags=tags;  
 set autochdir 
+"
 "------------------------------------------------------------------------------
-"11 vim-protodef  FSwitch
+"10 vim-protodef  FSwitch
 "------------------------------------------------------------------------------
 " 成员函数的实现顺序与声明顺序一致
 let g:disable_protodef_sorting=1
@@ -686,7 +723,7 @@ let g:protodefprotogetter='~/.vim/bundle/protodef/pullproto.pl'
 let g:disable_protodef_sorting=1
 
 "------------------------------------------------------------------------------
-"12 miniBufExplorer配置
+"11 miniBufExplorer配置
 "------------------------------------------------------------------------------
 " 显示/隐藏 MiniBufExplorer 窗口
 map <Leader>bl :MBEToggle<cr>
@@ -694,7 +731,7 @@ map <Leader>bl :MBEToggle<cr>
 map <C-Tab> :MBEbn<cr>
 map <C-S-Tab> :MBEbp<cr>
 "------------------------------------------------------------------------------
-"13 gundo无限撤销
+"12 gundo无限撤销
 "------------------------------------------------------------------------------
 " 调用 gundo 树
 nnoremap <Leader>ud :GundoToggle<CR>
@@ -702,6 +739,55 @@ nnoremap <Leader>ud :GundoToggle<CR>
 set undofile
 " undo 历史保存路径
 set undodir=~/.undo_history/
+
+"------------------------------------------------------------------------------
+"13 javacomplete 配置
+"------------------------------------------------------------------------------
+setlocal omnifunc=javacomplete#Complete
+autocmd FileType java set omnifunc=javacomplete#Complete
+autocmd FileType java set completefunc=javacomplete#CompleteParamsInf
+autocmd FileType java inoremap <expr><CR> pumvisible()?"\<C-Y>":"<CR>"
+"appledeMacBook-Pro:vim apple$
+
+"------------------------------------------------------------------------------
+"14 viim-chat聊天插件配置
+"------------------------------------------------------------------------------
+"call dein#add('wsdjeg/vim-chat')  "增加聊天插件
+"call chat#chatting#OpenMsgWin()   
+"call chat#qq#start()
+
+"------------------------------------------------------------------------------
+"15 vim-pathogen插件管理配置
+"------------------------------------------------------------------------------
+"可以将下载的插件各自独自占一个目录
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+
+"------------------------------------------------------------------------------
+"16库信息参考
+"------------------------------------------------------------------------------
+" 启用:Man命令查看各类man信息
+source $VIMRUNTIME/ftplugin/man.vim
+" 定义:Man命令查看各类man信息的快捷键
+nmap <Leader>man :Man 3 <cword><CR>
+
+"------------------------------------------------------------------------------
+"17　miniBufExplorer多文档编辑
+"------------------------------------------------------------------------------
+" 显示/隐藏 MiniBufExplorer 窗口
+map <Leader>bl :MBEToggle<cr>
+" buffer 切换快捷键
+map <C-Tab> :MBEbn<cr>
+map <C-S-Tab> :MBEbp<cr>
+
+"------------------------------------------------------------------------------
+"18 一键编译
+"------------------------------------------------------------------------------
+"编译
+nmap <Leader>ma :!rm -rf main<CR>:wa<CR>:make<CR><CR>:cw<CR>
+"编译及运行
+nmap <Leader>g :!rm -rf main<CR>:wa<CR>:make<CR>:cw<CR><CR>:!./main<CR>
 
 "  ----------------------------------------------------------------------------
 "　插件介绍
@@ -712,51 +798,49 @@ set undodir=~/.undo_history/
 " 'rstacruz/sparkup', {'rtp': 'vim/'}
 " 'Yggdroot/indentLine'
 " 'tpope/vim-rails.git'
-" vim-scripts repos
+" 'vim-scripts repos'
 " 'L9'
 " 'FuzzyFinder'
-" non github repos
 " 'https://github.com/wincent/command-t.git'
 " 'Auto-Pairs'
 " 'python-imports.vim'
 " 'CaptureClipboard'
 " 'ctrlp-modified.vim'
 " 'last_edit_marker.vim'
-" 'synmark.vim'
-" 'Python-mode-klen'
-" 'SQLComplete.vim'
-" 'Javascript-OmniCompletion-with-YUI-and-j'
-" 'JavaScript-Indent'
-" 'Better-Javascript-Indentation'
-" 'jslint.vim'
-" 'pangloss/vim-javascript'
-" 'Vim-Script-Updater'
-" 'ctrlp.vim'
-" 'tacahiroy/ctrlp-funky'
-" 'jsbeautify'
-" 'The-NERD-Commenter'　              #注释工具，可以用这个插件实现统一的注释
-" 'c.vim'                             #c语言语法高亮
-" 'taglist.vim'                       #把当前文件中的宏、全局变量、函数等tag显示在Symbol窗口，用鼠标点上述tag，就跳到该tag定义的位置
-" 'vim-scripts/TaskList.vim'          #任务列表
-" 'majutsushi/tagbar'                 #可以将正在编辑的文件生成一个大纲, 包含类/方法/变量等, 可以选中快速跳转到目标位置, 编辑大文件特别有用
-" 'Valloric/YouCompleteMe'            #vim自动补全神器
-" 'SirVer/ultisnips'                  #自动补全代码片段　，例如宏定义，只需ifn+<Tab>键
-" 'python-mode/python-mode'           #用来打造强大的python ide
-" 'godlygeek/tabular'                 #对齐；或者＝
-" 'easymotion/vim-easymotion'         #定位插件，能够准确定位到某个字母
-" 'scrooloose/nerdcommenter'          #用来批量注释与反注释                     
-" 'sjl/gundo.vim'                     #提供无限撤销
-" 'mattn/emmet-vim'
-" 'vim-airline/vim-airline'
-" 'tomasr/molokai'
-" 'altercation/vim-colors-solarized'
-" 'vim-syntastic/syntastic'           #实时进行语法检查
-" 'django_templates.vim'
-" 'Django-Projects'
-" 'Valloric/YouCompleteMe'
-" 'FredKSchott/CoVim'
-" 'djangojump'
-" 根据类声明自动生成类实现的代码框架 vim-protodef 依赖 FSwitch
-" 'derekwyatt/vim-protodef'
-"'fholgado/minibufexpl.vim' #多文档编辑 
-"'derekwyatt/vim-fswitch'
+" 'synmark.vim'          
+" 'Python-mode-klen'                         # python ide
+" 'SQLComplete.vim'                          # sql代码完成系统
+" 'Javascript-OmniCompletion-with-YUI-and-j' # Javascript
+" 'JavaScript-Indent'                        # Javascript
+" 'Better-Javascript-Indentation'            # javascript
+" 'jslint.vim'　　　　　　　　　　　　       # javascript
+" 'pangloss/vim-javascript'                  # Javascript
+" 'Vim-Script-Updater'　　　　　　　　       # vim插件更新
+" 'ctrlp.vim'                                # 文件搜索
+" 'tacahiroy/ctrlp-funky'　　　　　　        # ctrlp文件搜索扩展
+" 'jsbeautify'                               # Javascript代码美化
+" 'The-NERD-Commenter'　                     # 注释工具，可以用这个插件实现统一的注释
+" 'c.vim'                                    # c语言语法高亮
+" 'taglist.vim'                              # 把当前文件中的宏、全局变量、函数等tag显示在Symbol窗口，用鼠标点上述tag，就跳到该tag定义的位置
+" 'vim-scripts/TaskList.vim'                 # 任务列表
+" 'majutsushi/tagbar'                        # 可以将正在编辑的文件生成一个大纲, 包含类/方法/变量等, 可以选中快速跳转到目标位置, 编辑大文件特别有用
+" 'Valloric/YouCompleteMe'                   # vim自动补全神器
+" 'SirVer/ultisnips'                         # 自动补全代码片段　，例如宏定义，只需ifn+<Tab>键
+" 'python-mode/python-mode'                  # 用来打造强大的python ide
+" 'godlygeek/tabular'                        # 对齐；或者＝
+" 'easymotion/vim-easymotion'                # 定位插件，能够准确定位到某个字母
+" 'scrooloose/nerdcommenter'                 # 用来批量注释与反注释
+" 'sjl/gundo.vim'                            # 提供无限撤销
+" 'mattn/emmet-vim'　　　　　　　　　        # 它使用仿CSS选择器的语法来生成代码,提高HTML/CSS代码编写的速度,
+" 'vim-airline/vim-airline'　　              # 提供底部状态栏和顶部buffer
+" 'tomasr/molokai'                           # 一种主题
+" 'altercation/vim-colors-solarized'　       # 一种主题
+" 'vim-syntastic/syntastic'                  # 实时进行语法检查
+" 'django_templates.vim'                     # django_templates模板
+" " 'derekwyatt/vim-protodef'                  # 能根据类声明自动生成类实现的代码框架
+" 'derekwyatt/vim-fswitch'                   # 能根据类声明自动生成类实现的代码框架
+" 'fholgado/minibufexpl.vim'　　　　　       # 多文档编辑
+" 'suan/vim-instant-markdown'                # markdown插件
+" 'lilydjwg/fcitx.vim'                       # 能够使得在insert模式使用中文输入法，进入命令行模式直接使用英文
+" 'tpope/vim-pathogen'                       #插件管理的插件
+" 'plasticboy/vim-markdown'                  #markdown文档插件
