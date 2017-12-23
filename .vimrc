@@ -47,7 +47,6 @@ set sm
 set selection=inclusive
 set wildmenu
 set mousemodel=popup
-
 au FileType php setlocal dict+=~/.vim/dict/php_funclist.dict
 au FileType css setlocal dict+=~/.vim/dict/css.dict
 au FileType c setlocal dict+=~/.vim/dict/c.dict
@@ -488,12 +487,19 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'derekwyatt/vim-protodef'
 Plugin 'derekwyatt/vim-fswitch'
 Plugin 'fholgado/minibufexpl.vim'
-Plugin 'suan/vim-instant-markdown'
 Plugin 'lilydjwg/fcitx.vim'
 Plugin 'tpope/vim-git'
 Plugin 'gregsexton/gitv'
 Plugin 'tpope/vim-pathogen'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'chiel92/vim-autoformat'
+"Plugin 'suan/vim-instant-markdown'
+Plugin 'tpope/vim-surround'
+Plugin 'mzlogin/vim-markdown-toc'
+Plugin 'jszakmeister/markdown2ctags'
+Plugin 'iamcco/markdown-preview.vim'
+"Plugin 'vim-wakatime'
+"Plugin 'flazz/vim-colorschemes'
 "Plugain 'vim-signify'
 "Plugin 'tpope/vim-fugitive'
 "Plugin 'vim-chat/vim-chat'
@@ -788,6 +794,39 @@ map <C-S-Tab> :MBEbp<cr>
 nmap <Leader>ma :!rm -rf main<CR>:wa<CR>:make<CR><CR>:cw<CR>
 "编译及运行
 nmap <Leader>g :!rm -rf main<CR>:wa<CR>:make<CR>:cw<CR><CR>:!./main<CR>
+
+"------------------------------------------------------------------------------
+"19 vim-markdown配置
+"------------------------------------------------------------------------------
+"au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn}   
+"set filetype=mkd 
+
+"------------------------------------------------------------------------------
+"20 markdown2ctags
+"------------------------------------------------------------------------------
+"在tagbar中添加markdown支持
+let g:tagbar_type_markdown = {
+    \ 'ctagstype': 'markdown',
+    \ 'ctagsbin' : '~/.vim/markdown2ctags.py',
+    \ 'ctagsargs' : '-f - --sort=yes',
+    \ 'kinds' : [
+    \ 's:sections',
+    \ 'i:images'
+    \ ],
+    \ 'sro' : '|',
+    \ 'kind2scope' : {
+    \ 's' : 'section',
+    \ },
+    \ 'sort': 0,
+\ }
+
+"------------------------------------------------------------------------------
+"21 markdown-preview预览插件 
+"------------------------------------------------------------------------------
+let g:mkdp_path_to_chrome="firefox"
+let g:mkdp_auto_close=0
+nmap <F7> <Plug>MarkdownPreview
+nmap <F8> <Plug>StopMarkdownPreview
 
 "  ----------------------------------------------------------------------------
 "　插件介绍
