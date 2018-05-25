@@ -1,9 +1,10 @@
+
 #!/bin/bash
-echo "这个脚本可以在ubuntu/linuxmint系列系统使用!"
+echo "这个脚本可以在archlinux系列系统使用!"
 echo "安装将花费一定时间，请耐心等待直到安装完成^_^"
 
-if which apt-get >/dev/null; then #如果检测到apt-get，则进行下一步
-    sudo apt-get install -y git make gcc gdb cmake ctags  #安装基本环境
+if which pacman >/dev/null; then 
+    sudo pacman -S -y git make gcc gdb cmake ctags  #安装基本环境
 	echo "基本环境安装完成！"
 fi
 
@@ -19,8 +20,7 @@ git clone http://github.com/vim/vim.git
 cd vim/ 
 
 #安装vim所需环境
-sudo apt-get lua5.3 python python2.7 python3 ruby  
-sudo apt-get install python-dev python3-dev ruby-dev lua-dev libx11-dev libgtk2.0-dev libgtk-3-dev libncurses5-dev
+sudo pacman -S -y lua python python2.7 python3 ruby libx11 gtk2 gtk3 ncurses
 
 #编译安装vim
 ./configure --with-features=huge --enable-pythoninterp --enable-rubyinterp --enable-luainterp --enable-perlinterp --with-python-config-dir=/usr/lib/python2.7/config/ --enable-gui=gtk2 --enable-cscope --prefix=/usr

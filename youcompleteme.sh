@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 
 #一般用vundle不能安装成功youcompleteme插件，所以需要额外安装
 
